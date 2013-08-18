@@ -52,7 +52,8 @@ function microsite_add_meta_boxes() {
 
 function microsite_meta_select_box_inner() {
 	global $post;
-	$microsites = array('test');
+	$microsites = scandir(MICROSITE_PATH);
+	$microsites = array_slice($microsites, 2);
 	$selectedMicrosite = @get_post_meta($post->ID, 'microsite', true);
 	include dirname(__FILE__) . '/templates/meta-select-box-inner.php';
 }
