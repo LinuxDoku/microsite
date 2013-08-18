@@ -25,7 +25,7 @@ function microsite_bootstrap() {
 
 function microsite_pre_get_posts($query) {
 	if($query->is_page) {
-		$microsite = get_post_meta(get_query_var('page_id'), 'microsite', true);
+		$microsite = get_post_meta(get_queried_object_id(), 'microsite', true);
 		if($microsite != null && $microsite != 'none') {
 			// to clear all variables put in own function
 			function run($microsite) {
