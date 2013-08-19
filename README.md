@@ -21,7 +21,15 @@ A very basic example of a microsite:
 
 ## API
 ### wordpress content
-You can use any wordpress function or content in your microsite. In near future there will be an easy to use Interface to get away from these dirty wordpress features. Maybe also some new backend ui, cause struggle with the plain files is not everyones thing ;-)
+You can use any wordpress function or content in your microsite.
+
+On the other hand there's an `microsite_api` class, which provides some useful data. An object related to the shown page which is rendered as microsite is accessable via `$api` in you microsite code.
+
+    <?php echo $api->post_id ?>
+    <?php echo $api->meta->microsite ?>
+    <?php echo $api->meta->newsletter_url ?>
+
+`$api->meta` is an additional class which has some magic getter to fetch the posts metadata also known as user defined fields. These fields name is the magic property in this class.
 
 ### wordpress plugins
-In near future also a little api for wordpress plugins will be integrated. So managing js files on lot of microsites by hand will be obsolete.
+In near future also a little api for wordpress plugins will be integrated. So for example managing js files on lot of microsites by hand will be obsolete.

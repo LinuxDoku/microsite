@@ -10,6 +10,8 @@
  * @copyright (c) 2013, Martin Lantzsch <martin@linux-doku.de>
  */
 
+require 'api/microsite_api.php';
+
 add_action('init', 'microsite_bootstrap');
 add_action('pre_get_posts', 'microsite_pre_get_posts');
 add_action('add_meta_boxes', 'microsite_add_meta_boxes');
@@ -28,14 +30,14 @@ function microsite_pre_get_posts($query) {
 		$microsite = get_post_meta(get_queried_object_id(), 'microsite', true);
 		if($microsite != null && $microsite != 'none') {
 			// to clear all variables put in own function
-			function run($microsite) {
+			function run($microsite, microsite_api $api=null) {
 				$path = MICROSITE_PATH . '/' . $microsite . '/index.php';
 				if(file_exists($path)) {
 					include $path;
 					exit;
 				}
 			};
-			run($microsite);
+			run($microsite, new microsite_api);
 		}
 	}
 }
