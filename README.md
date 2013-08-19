@@ -19,6 +19,21 @@ A very basic example of a microsite:
         </body>
     </html>
 
+An example with some api code:
+`wp-content/microsites/mynewsletterpage/index.php`
+
+    <html>
+        <head>
+            <title>MyProduct</title>
+        </head>
+        <body>
+            <h1>Get my Newsletter</h1>
+			<a href="<?php echo $api->meta->get_newsletter_url ?>">Subscribe now!</a>
+        </body>
+    </html>
+
+The meta field `get_newsletter_url` has to be defined as custom field in the wordpress page which you transformed in a microsite.
+
 ## API
 ### wordpress content
 You can use any wordpress function or content in your microsite.
